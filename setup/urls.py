@@ -20,11 +20,12 @@ from django.urls import path
 from core.views import home
 from core.views import listar
 from core.views import chamados
-from core.views import novo
+from core.views import novo, sobre
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('listar/', listar, name='listar'),
     path('novo/<str:lab>/<str:problema>/<str:prioridade>/', novo, name='novo'),
+    path('sobre/', sobre, name='sobre'),
 ]

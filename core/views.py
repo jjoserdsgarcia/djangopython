@@ -28,3 +28,6 @@ def listar(request):
 def novo(request, lab, problema, prioridade):
     chamados.append({"lab": lab, "problema": problema, "prioridade": prioridade})
     return HttpResponse(f"<h1>Novo Chamado Criado</h1><p>Lab: {lab}</p><p>Problema: {problema}</p><p>Prioridade: {prioridade}</p><br><a href='/listar/'>[Voltar para Lista]</a>")       
+
+def sobre(request):
+    return render(request, 'core/sobre.html')
