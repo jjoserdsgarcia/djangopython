@@ -13,6 +13,12 @@ def home(request):
 # Nossa lista global (Banco de Dados em memória)
 chamados = [
     {"lab": "Lab 01", "problema": "PC lento", "prioridade": "Média"},
+    {"lab": "Lab 02", "problema": "PC lento", "prioridade": "Baixa"},
+    {"lab": "Lab 03", "problema": "PC quebrou o tecido do espaço-tempo", "prioridade": "Alta"},
+    {"lab": "Lab 04", "problema": "PC rapido demais", "prioridade": "Média"},
+    {"lab": "Lab 05", "problema": "PC do michel foi roubado", "prioridade": "Média"},
+    {"lab": "Lab 06", "problema": "PC do elton queimou", "prioridade": "Alta"},
+    {"lab": "Lab 07", "problema": "PC do napar explode", "prioridade": "Alta"},
 ]
 
 def listar(request):
@@ -30,4 +36,4 @@ def novo(request, lab, problema, prioridade):
     return HttpResponse(f"<h1>Novo Chamado Criado</h1><p>Lab: {lab}</p><p>Problema: {problema}</p><p>Prioridade: {prioridade}</p><br><a href='/listar/'>[Voltar para Lista]</a>")       
 
 def sobre(request):
-    return render(request, 'core/sobre.html')
+    return render(request, 'core/sobre.html', {'chamados': chamados})

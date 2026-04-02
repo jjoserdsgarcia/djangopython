@@ -16,3 +16,27 @@
 <h1> BOM DIA </h1>
 
 <button class="btn btn-primary"> Clique Aqui </button>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lab</th>
+            <th>Problema</th>
+            <th>Prioridade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in chamados %}
+       
+            <tr class="{% if c.prioridade == "Alta" %}table-danger {% elif c.prioridade == "Média" %}table-warning{%else %}table-success{% endif %}">
+            <td>{{ c.lab }}</td>
+            <td>{{ c.problema }}</td>
+            <td>{{ c.prioridade }}</td>
+        </tr>
+        
+        {% endfor %}
+            
+
+            </tbody>
+</table>
