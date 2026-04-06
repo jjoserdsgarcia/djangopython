@@ -14,7 +14,7 @@ def home(request):
 chamados = [
     {"lab": "Lab 01", "problema": "PC lento", "prioridade": "Média"},
     {"lab": "Lab 02", "problema": "PC lento", "prioridade": "Baixa"},
-    {"lab": "Lab 03", "problema": "PC quebrou o tecido do espaço-tempo", "prioridade": "Alta"},
+    {"lab": "Lab 03", "problema": "PC quebrou o tecido do espaço-tempo", "prioridade": "Baixa"},
     {"lab": "Lab 04", "problema": "PC rapido demais", "prioridade": "Média"},
     {"lab": "Lab 05", "problema": "PC do michel foi roubado", "prioridade": "Média"},
     {"lab": "Lab 06", "problema": "PC do elton queimou", "prioridade": "Alta"},
@@ -37,3 +37,6 @@ def novo(request, lab, problema, prioridade):
 
 def sobre(request):
     return render(request, 'core/sobre.html', {'chamados': chamados})
+
+def bemvindo(request):
+    return render(request, 'core/bemvindo.html')
