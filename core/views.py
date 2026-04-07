@@ -21,19 +21,12 @@ chamados = [
     {"lab": "Lab 07", "problema": "PC do napar explode", "prioridade": "Alta"},
 ]
 
-def listar(request):
-    # Lógica para listar os chamados em HTML
-    html = "<h1>🖥️ HelpDesk - Lista de Chamados</h1><hr>"
-
-    for i, c in enumerate(chamados):
-        html += f"<p>ID: {i} | <b>{c['lab']}</b> - {c['problema']} ({c['prioridade']})</p>"
-
-    html += "<br><a href='/novo/Lab02/Teclado/Alta/'>[Simular Novo Chamado]</a>"
-    return HttpResponse(html)
+def criarchamado(request):
+    return render(request, 'core/criarchamado.html', {'chamados': chamados})
 
 def novo(request, lab, problema, prioridade):
     chamados.append({"lab": lab, "problema": problema, "prioridade": prioridade})
-    return HttpResponse(f"<h1>Novo Chamado Criado</h1><p>Lab: {lab}</p><p>Problema: {problema}</p><p>Prioridade: {prioridade}</p><br><a href='/listar/'>[Voltar para Lista]</a>")       
+    return HttpResponse(f"<h1>Novo Chamado Criado</h1><p>Lab: {lab}</p><p>Problema: {problema}</p><p>Prioridade: {prioridade}</p><br><a href='/criarchamado/'>[Voltar para Criar Chamado]</a>")       
 
 def sobre(request):
     return render(request, 'core/sobre.html', {'chamados': chamados})

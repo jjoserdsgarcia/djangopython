@@ -17,17 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path
-from core.views import home
-from core.views import listar
+from core.views import criarchamado, home
+
 from core.views import chamados
 from core.views import novo, sobre, bemvindo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('listar/', listar, name='listar'),
     path('novo/<str:lab>/<str:problema>/<str:prioridade>/', novo, name='novo'),
-    path('bemvindo/', bemvindo, name='Bem Vindo'), 
+    path('bemvindo/', bemvindo, name='BemVindo'), 
     path('sobre/', sobre, name='sobre'),
-    
+    path('criarchamado/', criarchamado, name='criarchamado'),
 ]

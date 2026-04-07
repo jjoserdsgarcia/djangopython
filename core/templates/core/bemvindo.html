@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao Help Desk</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .welcome-card {
+            margin-top: 50px;
+        }
+
+        .welcome-text {
+            font-size: 1.5rem;
+            color: #6c757d;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <a class="navbar-brand" href="#">💻 Help Desk</a>
+        </nav>
+
+        <!-- Tela de Boas-Vindas -->
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="card welcome-card shadow">
+                    <div class="card-body text-center">
+                        <h3 class="card-title text-primary mb-4">Bem-vindo ao Help Desk!</h3>
+                        <p class="welcome-text">
+                            Você está prestes a acessar o sistema de suporte técnico.
+                            Caso precise de ajuda, basta abrir um chamado e nossa equipe estará à disposição.
+                        </p>
+
+                        <div class="mt-4">
+                            <a href="{% url 'sobre' %}" class="btn btn-primary btn-lg">Ver Chamados</a>
+                            <a href="{% url 'criarchamado' %}" class="btn btn-outline-primary btn-lg ms-2">Criar
+                                Chamado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
