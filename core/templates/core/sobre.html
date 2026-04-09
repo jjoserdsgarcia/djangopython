@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -7,6 +9,7 @@
     <title>Bootstrap Helpdesk</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 </head>
 
 <body class="bg-light">
@@ -24,7 +27,7 @@
         <!-- TÍTULO -->
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2 class="fw-bold">BOM DIA</h2>
-            <a href="{% url 'BemVindo' %}" class="btn btn-primary shadow-sm">Voltar</a>
+            <a href="{% url 'BemVindo' %}" class="btn btn-primary shadow-sm so-um-nome">Voltar</a>
         </div>
 
         <!-- CARD -->
