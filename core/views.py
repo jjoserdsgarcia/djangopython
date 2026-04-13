@@ -22,7 +22,14 @@ chamados = [
 ]
 
 def criarchamado(request):
-    return render(request, 'core/criarchamado.html', {'chamados': chamados})
+    if request.method == 'POST':
+        lab = request.POST.get('lab')
+        problema = request.POST.get('problema')
+        prioridade = request.POST.get('prioridade')
+        chamados.append({"lab": lab, "problema": problema, "prioridade": prioridade})
+        return HttpResponse(f"<h1>Novo Chamado Criado</h1><p>Lab: {lab}</p><p>Problema: {problema}</p><p>Prioridade: {prioridade}</p><br><a href='/criarchamado/'>[Voltar para Criar Chamado]</a>")
+
+    return render(request, 'core/criarchamado.html' )
 
 def novo(request, lab, problema, prioridade):
     chamados.append({"lab": lab, "problema": problema, "prioridade": prioridade})
@@ -33,3 +40,25 @@ def sobre(request):
 
 def bemvindo(request):
     return render(request, 'core/bemvindo.html')
+
+def imc(request):
+    if request.method == 'POST':
+        try:
+          peso = float(request.POST.get('peso'))
+        
+        except ValueError:
+            return HttpResponse("<h1>Valor de peso inválido. Por favor, insira um número.</h1><br><a href='/imc/'>[Voltar para IMC]</a>")
+        
+
+        try:
+            altura = float(request.POST.get('altura'))
+        except ValueError:
+            return HttpResponse("<h1>Valor de altura inválido. Por favor, insira um número.</h1><br><a href='/imc/'>[Voltar para IMC]</a>")
+
+        imc = peso / (altura * altura)
+        imc = round(imc, 2)
+        print(peso)
+        print(altura)
+        print(imc)
+        return render(request, 'core/imc.html', {'imc': imc})
+    return render(request, 'core/imc.html')
