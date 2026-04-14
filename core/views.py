@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from core.models import Agenda
 
 # Create your views here.
 
@@ -27,6 +28,8 @@ def criarchamado(request):
         problema = request.POST.get('problema')
         prioridade = request.POST.get('prioridade')
         chamados.append({"lab": lab, "problema": problema, "prioridade": prioridade})
+        Agenda.objects.create(descricao=problema, dthr_evento='2024-06-30 10:00:00', responsavel='Técnico', duracao=1)
+        return redirect('imc')
         return HttpResponse(f"<h1>Novo Chamado Criado</h1><p>Lab: {lab}</p><p>Problema: {problema}</p><p>Prioridade: {prioridade}</p><br><a href='/criarchamado/'>[Voltar para Criar Chamado]</a>")
 
     return render(request, 'core/criarchamado.html' )
