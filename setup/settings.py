@@ -120,3 +120,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+LOGIN_URL = '/admin'  # URL para a página de login
+LOGIN_REDIRECT_URL = '/imc'

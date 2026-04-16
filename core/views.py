@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from core.models import Agenda
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -41,9 +43,12 @@ def novo(request, lab, problema, prioridade):
 def sobre(request):
     return render(request, 'core/sobre.html', {'chamados': chamados})
 
+
 def bemvindo(request):
     return render(request, 'core/bemvindo.html')
 
+
+@login_required
 def imc(request):
     if request.method == 'POST':
         try:
