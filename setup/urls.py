@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path
-from core.views import criarchamado, home, sobre, bemvindo, imc, novo, tela_carros
+from core.views import criarchamado, excluir_carro, home, sobre, bemvindo, imc, novo, tela_carros
 from django.shortcuts import render, redirect
 from core.views import chamados
 
@@ -31,4 +31,5 @@ urlpatterns = [
     path('criarchamado/', criarchamado, name='criarchamado'),
     path('imc/', imc, name='imc'),
     path('tela_carros/', tela_carros, name='tela_carros'),
+    path('excluir/<int:carro_id>/', excluir_carro, name='rota_excluir'),
 ]

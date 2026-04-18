@@ -22,6 +22,7 @@
                     <th>Cor</th>
                     <th>Placa</th>
                     <th>Garagem</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +36,11 @@
                     <td>{{ carro.cor }}</td>
                     <td>{{ carro.placa }}</td>
                     <td>{{ carro.garagem.nome }}</td>
+                    <form action="{% url 'rota_excluir' carro.id %}" method="post">
+                        {% csrf_token %}
+                        <td><button type="submit" class="btn btn-danger">Excluir</button></td>
+                    </form>
+
                 </tr>
                 {% endfor %}
             </tbody>

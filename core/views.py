@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from core.models import Agenda, Carro
+from core.models import Agenda, Carro, Garagem
 from django.contrib.auth.decorators import login_required
 
 
@@ -51,6 +51,34 @@ def bemvindo(request):
 def tela_carros(request):
     carros = Carro.objects.all()
     return render(request, 'core/tela_carros.html', {'carros': carros})
+
+def excluir_carro(request, carro_id):
+    print(f"ID do carro a ser excluído: {carro_id}")
+    try:
+        carro = Carro.objects.get(id=carro_id)
+        carro.delete()
+        return redirect('tela_carros')
+    except Carro.DoesNotExist:
+        return HttpResponse("<h1>Carro não encontrado.</h1><br><a href='/tela_carros/'>[Voltar para Tela de Carros]</a>")
+    
+def salvar_carro(request):
+    if request.method == 'POST':
+        marca = request.POST.get('marca')
+        modelo = request.POST.get('modelo')
+        ano = request.POST.get('ano')
+        cor = request.POST.get('cor')
+        placa = request.POST.get('placa')
+        garagem_id = request.POST.get('garagem_id')
+
+        try:
+            garagem = Garagem.objects.get(id=garagem_id)
+            Carro.objects.create(marca=marca, modelo=modelo, ano=ano, cor=cor, placa=placa, garagem=garagem)
+            return redirect('tela_carros')
+        except Garagem.DoesNotExist:
+            return HttpResponse("<h1>Garagem não encontrada.</h1><br><a href='/tela_carros/'>[Voltar para Tela de Carros]</a>")
+    else:
+        return HttpResponse("<h1>Método inválido.</h1><br><a href='/tela_carros/'>[Voltar para Tela de Carros]</a>")
+
 
 
 
