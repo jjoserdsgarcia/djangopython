@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from core.models import Agenda
+from core.models import Agenda, Carro
 from django.contrib.auth.decorators import login_required
 
 
@@ -46,6 +46,12 @@ def sobre(request):
 
 def bemvindo(request):
     return render(request, 'core/bemvindo.html')
+
+
+def tela_carros(request):
+    carros = Carro.objects.all()
+    return render(request, 'core/tela_carros.html', {'carros': carros})
+
 
 
 @login_required

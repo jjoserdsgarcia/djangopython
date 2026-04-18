@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path
-from core.views import criarchamado, home, sobre, bemvindo, imc, novo
+from core.views import criarchamado, home, sobre, bemvindo, imc, novo, tela_carros
+from django.shortcuts import render, redirect
 from core.views import chamados
 
 
@@ -29,4 +30,5 @@ urlpatterns = [
     path('sobre/', sobre, name='sobre'),
     path('criarchamado/', criarchamado, name='criarchamado'),
     path('imc/', imc, name='imc'),
+    path('tela_carros/', tela_carros, name='tela_carros'),
 ]
